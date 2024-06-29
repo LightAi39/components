@@ -1,0 +1,376 @@
+<html lang="">
+  <!-- CREDIT TO REEZONATE FOR THIS BIO SETUP, I ONLY REDUCED IT FOR GENERAL USE https://github.com/Reezonate/Reesources/blob/main/bio.html-->
+  <!-- CREDIT TO REEZONATE FOR THIS BIO SETUP, I ONLY REDUCED IT FOR GENERAL USE https://github.com/Reezonate/Reesources/blob/main/bio.html-->
+  <!-- CREDIT TO REEZONATE FOR THIS BIO SETUP, I ONLY REDUCED IT FOR GENERAL USE https://github.com/Reezonate/Reesources/blob/main/bio.html-->
+  <head>
+    <title>Ree!</title>
+
+    <!-- VARIABLES & UTILS -->
+    <style>
+      :root {
+        --text-focus-color: rgba(255, 255, 255, 1);
+        --text-fade-color: rgba(255, 255, 255, 0.4);
+        --dark-bg-color: #121212;
+        --cutout-bg-color: #1a1a1a;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .flip-x {
+        transform: scaleX(-1);
+      }
+
+      .flip-y {
+        transform: scaleY(-1);
+      }
+
+      .dummy-content {
+        font-size: 16px;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 1);
+      }
+    </style>
+
+    <!-- BACKGROUND -->
+    <style>
+      .bg {
+        z-index: -1;
+        position: absolute;
+        width: 100%;
+        height: 390px;
+        display: flex;
+        flex-direction: column;
+        background: var(--cutout-bg-color);
+      }
+
+      .bg-gap {
+        height: 30px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+      }
+
+      .bg-gap-outer-corner {
+        height: 30px;
+        flex-grow: 1;
+        background: var(--dark-bg-color);
+      }
+
+      .bg-gap-inner-corner-limiter {
+        height: 30px;
+        width: 30px;
+        overflow: hidden;
+      }
+
+      .bg-gap-inner-corner {
+        position: relative;
+        height: 40px;
+        width: 40px;
+        box-shadow: 0 0 0 10px var(--dark-bg-color);
+        border-radius: 10px;
+      }
+
+      .outer-top-right {
+        border-radius: 0 18px 0 0;
+      }
+
+      .outer-top-left {
+        border-radius: 18px 0 0 0;
+      }
+
+      .outer-bottom-right {
+        border-radius: 0 0 18px 0;
+      }
+
+      .outer-bottom-left {
+        border-radius: 0 0 0 18px;
+      }
+
+      .inner-top-right {
+        top: -10px;
+      }
+
+      .inner-top-left {
+        top: -10px;
+        left: -10px;
+      }
+
+      .inner-bottom-right {
+        top: 0px;
+      }
+
+      .inner-bottom-left {
+        top: 0px;
+        left: -10px;
+      }
+
+      .bg-gap-top {
+        width: 260px;
+      }
+
+      .bg-main {
+        height: 100%;
+        width: 100%;
+        background: var(--dark-bg-color);
+      }
+
+      .bg-gap-bottom {
+        width: 200px;
+      }
+    </style>
+
+    <!--  MAIN  -->
+    <style>
+      body {
+        margin: 0;
+      }
+      .root-flex {
+        width: 100%;
+        min-height: 390px;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: center;
+      }
+      .main-flex {
+        width: 100%;
+        max-width: 1000px;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+      .middle-flex {
+        flex-grow: 1;
+        min-width: 364px;
+        min-height: 390px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+      }
+    </style>
+
+    <!-- TABS -->
+    <style>
+      .tabset > input[type="radio"] {
+        position: absolute;
+        left: -200vw;
+      }
+
+      .tabset {
+        width: 100%;
+      }
+
+      .tabset .tab-panel {
+        max-height: 390px;
+        flex-grow: 1;
+        padding-top: 5px;
+        display: none;
+      }
+
+      .tabset
+        > input:first-child:checked
+        ~ .tab-panels
+        > .tab-panel:first-child,
+      .tabset
+        > input:nth-child(3):checked
+        ~ .tab-panels
+        > .tab-panel:nth-child(2),
+      .tabset
+        > input:nth-child(5):checked
+        ~ .tab-panels
+        > .tab-panel:nth-child(3),
+      .tabset
+        > input:nth-child(7):checked
+        ~ .tab-panels
+        > .tab-panel:nth-child(4),
+      .tabset
+        > input:nth-child(9):checked
+        ~ .tab-panels
+        > .tab-panel:nth-child(5),
+      .tabset
+        > input:nth-child(11):checked
+        ~ .tab-panels
+        > .tab-panel:nth-child(6) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .tabset > label {
+        position: relative;
+        display: inline-block;
+        padding: 5px 0px;
+        cursor: pointer;
+        font-weight: 600;
+        width: 90px;
+        text-align: center;
+        transition: color 0.1s;
+        color: var(--text-fade-color);
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .first-label {
+        left: calc(50% - 90px / 2 - 100px);
+      }
+
+      .second-label {
+        left: calc(50% - 90px / 2 - 94px);
+      }
+
+      .third-label {
+        left: calc(50% - 90px / 2 - 88px);
+      }
+
+      .tabset > label:hover,
+      .tabset > input:focus + label,
+      .tabset > input:checked + label {
+        color: var(--text-focus-color);
+      }
+
+      .tabset > label:hover::after,
+      .tabset > input:focus + label::after,
+      .tabset > input:checked + label::after {
+        background: #06c;
+      }
+
+      .tabset > input:checked + label {
+        border-color: #ccc;
+        border-bottom: 2px solid #ffffff;
+        margin-bottom: -2px;
+      }
+
+      .tab-panels {
+        height: 330px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+    </style>
+
+    <!--  THEMES  -->
+    <style>
+      .mirror-theme,
+      .mirror-low-theme,
+      .unbounded-theme,
+      .flylight-theme {
+        background-color: unset !important;
+        backdrop-filter: unset !important;
+        box-shadow: unset !important;
+      }
+
+      .mirror-theme *,
+      .mirror-low-theme *,
+      .unbounded-theme * {
+        --cutout-bg-color: transparent;
+        --dark-bg-color: rgba(0, 0, 0, 0.33);
+      }
+
+      .flylight-theme * {
+        --cutout-bg-color: transparent;
+        --dark-bg-color: rgba(0, 0, 0, 0.1);
+        --text-focus-color: rgba(0, 0, 0, 1);
+        --text-fade-color: rgba(0, 0, 0, 0.4);
+      }
+
+      .mirror-theme .saber,
+      .mirror-low-theme .saber,
+      .unbounded-theme .saber,
+      .flylight-theme .saber {
+        display: none;
+      }
+
+      .flylight-theme .star-wars-audio {
+        filter: unset;
+      }
+
+      .mirror-theme .mod-panel,
+      .mirror-low-theme .mod-panel,
+      .unbounded-theme .mod-panel {
+        border: 1px solid rgba(0, 0, 0, 0.33);
+        box-shadow: none;
+      }
+
+      .flylight-theme .mod-panel {
+        border: 1px solid rgba(0, 0, 0, 0);
+        box-shadow: none;
+      }
+
+      .mirror-theme .mod-name,
+      .mirror-low-theme .mod-name,
+      .unbounded-theme .mod-name {
+        background: rgba(0, 0, 0, 0.33);
+      }
+
+      .flylight-theme .mod-name {
+        color: rgba(0, 0, 0, 0.8);
+        background: rgba(255, 255, 255, 1);
+      }
+
+      .flylight-theme .mod-description {
+        color: rgba(0, 0, 0, 0.8);
+      }
+
+      .flylight-theme .tabset > input:checked + label {
+        border-bottom: 2px solid #000000;
+      }
+    </style>
+  </head>
+  <body class="reedark-theme">
+    <div class="root-flex">
+      <div class="bg">
+        <div class="bg-gap">
+          <div class="bg-gap-outer-corner outer-top-right"></div>
+          <div class="bg-gap-inner-corner-limiter">
+            <div class="bg-gap-inner-corner inner-top-right"></div>
+          </div>
+          <div class="bg-gap-top"></div>
+          <div class="bg-gap-inner-corner-limiter">
+            <div class="bg-gap-inner-corner inner-top-left"></div>
+          </div>
+          <div class="bg-gap-outer-corner outer-top-left"></div>
+        </div>
+        <div class="bg-main"></div>
+      </div>
+      <div class="main-flex">
+        <div class="middle-flex">
+          <div class="tabset">
+            <!-- Tab 1 -->
+            <input type="radio" name="tabset" id="tab1" aria-controls="t1" />
+            <label for="tab1" class="label first-label">About Me</label>
+            <!-- Tab 2 -->
+            <input
+              type="radio"
+              name="tabset"
+              id="tab2"
+              aria-controls="t2"
+              checked
+            />
+            <label for="tab2" class="label second-label">Showcase</label>
+            <!-- Tab 3 -->
+            <input type="radio" name="tabset" id="tab3" aria-controls="t3" />
+            <label for="tab3" class="label third-label">My Content</label>
+
+            <div class="tab-panels">
+              <section id="t1" class="tab-panel">
+                <div>tab 1 content</div>
+              </section>
+              <section id="t2" class="tab-panel">
+                <div>tab 2 content</div>
+              </section>
+              <section id="t3" class="tab-panel">
+                <div>tab 3 content</div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
